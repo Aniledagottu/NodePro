@@ -5,13 +5,16 @@ const commonRoute = Router();
 commonRoute.use(bodyParser.json());
 commonRoute.use(bodyParser.urlencoded({ extended: true }));
 commonRoute.get('/',(req, res) => {
-  res.send({data: "Common data"});
+  res
+  .status(400)
+  .send({data: "Common data"});
 })
 
 commonRoute.post('/', (req, res) =>{
   const {name, email, phoneNumber} = req.body;
-
-  res.send({data: `Dear ${name} your mail${email} and phone number: ${phoneNumber} got saved`});
+  res
+  .status(201)
+  .send({data: `Dear ${name} your mail${email} and phone number: ${phoneNumber} got saved`});
 })
 
 export default commonRoute;
